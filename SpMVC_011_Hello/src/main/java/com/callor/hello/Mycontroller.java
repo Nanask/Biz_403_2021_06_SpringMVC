@@ -53,6 +53,24 @@ public class Mycontroller {
 	public void insert() {
 		
 	}
+	/*
+	 * Spring에서는 Web으로부터 전달받은 데이터를 Java method의 매개변수를 설정하여 받을 수 있다.
+	 * 
+	 * Spring framework 내부에서 Reflection이라는 코드가 작동되어서 전달받은 변수이름과
+	 * Java method의 매개변수(String dummy, int num)와 이름매칭방법으로 변수를 받는다
+	 * 이런 코드는 개발자가 신경쓰지 않아도 자동으로 작동되는 코드이다.
+	 * getParameter()등의 코드를 이제는 잊어도 된다.
+	 * 
+	 * 그런데,
+	 * 	Java method의 변수를 String형이 아닌 것으로(ex : 숫자형, Boolean형 등) 설정하면
+	 * 	Reflection이 실행되는 동안에 String형 데이터를 설정된 데이터 type으로 형변환 과정이 실행된다.
+	 * 	이 과정에서 형 변환의 Exception이 발생하면 Reflection 코드가 중단되고
+	 *  Spring의 dispatcher는 Web 400 Status Code를 응답해버린다.
+	 *  
+	 *  또한 구체적인 어떤 문제가 발생했는지 알려주지 않는다
+	 *  
+	 *  그래서 제일 먼저 확인해야 하는 것은 속성 변환!!! 숫자변환인데 문자열넣거나 null이거나 등등등
+	 */
 	
 	// insert URI mapping으로 GET 방식의 요청을 처리하겠다.
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
