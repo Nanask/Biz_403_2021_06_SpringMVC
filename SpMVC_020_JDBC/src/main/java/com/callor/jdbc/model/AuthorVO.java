@@ -9,15 +9,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class AuthorVO {
 	
-	private String au_code; //	CHAR(5)
-	private String au_name; //	VARCHAR(50)
-	private String au_tel; //	VARCHAR(20)
-	private String au_addr; //	VARCHAR(125)
-	private String au_genre; //	VARCHAR(30)
+	private String au_code;//	CHAR(5)
+	private String 	au_name;//	VARCHAR(50)
+	private String au_tel;//	VARCHAR(20)
+	private String au_addr;//	VARCHAR(125)
+	private String au_genre;//	VARCHAR(30)
 
 
 }
