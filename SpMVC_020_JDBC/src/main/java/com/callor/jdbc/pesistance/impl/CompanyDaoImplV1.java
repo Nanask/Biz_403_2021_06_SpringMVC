@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  * CompService cs1 = new ComplServiceImplV1();
  */
 @Slf4j
-@Repository("compDaoV1")
+@Repository("companyDaoV1")
 public class CompanyDaoImplV1 implements CompanyDao{
 	
 	protected JdbcTemplate jdbcTemplate;
