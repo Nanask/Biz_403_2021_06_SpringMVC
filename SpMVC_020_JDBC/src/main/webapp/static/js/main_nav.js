@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //   `` =>backTit : 역 작은 따옴표
       // JS에서 변수를 포함하는 문자열을 생성할 때 사용한다.,
       let urlPath = `${rootPath}`;
-      alert(menuText);
+      // alert(menuText);
       if (menuText === "HOME") {
         // urlPath += rootPath + "/"
         urlPath += "/";
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         urlPath += "/member/join";
       }
       //   alert("내가 가야할 곳 ${urlPath}");
-      alert(`내가 가야할 곳 ${urlPath}`);
+      // alert(`내가 가야할 곳 ${urlPath}`);
       location.href = urlPath;
     }
   });
