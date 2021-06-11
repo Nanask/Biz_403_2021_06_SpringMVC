@@ -6,86 +6,54 @@
 <html>
 <%@ include file="/WEB-INF/views/include/include_head.jspf"%>
 <style>
-	form {
-		width: 80%;
-		margin: 15px auto;
-		
-	}
-	fieldset {
-		border:1px solid green;
-		border-radius: 15px;
-	}
-	
-	legend {
-		text-align: center;
-		padding:10px 20px;
-		background-color: #aaa;
-	}
-	
-	form div {
-		width: 80%;
-		margin: 5px auto;
-	}
-	form label {
-		display: inline-block;
-		width: 20%;
-		text-align: right;
-		margin:4px 5px;
-		padding: 8px;
-		color: black;
-		font-weight: bold;
-	}
-	form input {
-		width: 50%;
-		margin: 4px 5px;
-		padding: 8px 12px;
-		border-radius: 25px;
-		outline: 0;
-		border-color: rgba(0,0,255,0.5);
-	
-	}
-	form input:focus {
-		border-color:#999;
-	}
-	form input:hover {
-	background-color: #ddd;
-}	
-	
 </style>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
 	<form action="POST">
-	<fieldset>
-	<legend>도서정보 등록</legend>
-		<div>
-			<label>ISBN</label> <input name="bk_isbn" id="bk_isbn" placeholder="">
-		</div>
-		<div>
-			<label>도서명</label> <input name="bk_title" id="bk_isbn" placeholder="">
-		</div>
-		<div>
-			<label>출판사</label> <input name="bk_ccode" id="bk_ccode" placeholder="">
-		</div>
-		<div>
-			<label>저자</label> <input name="bk_acode" id="bk_acode" placeholder="">
-		</div>
-		<div>
-			<label>출판년도</label> <input name="bk_date" id="bk_date" placeholder="">
-		</div>
-		<div>
-			<label>가격</label> <input name="bk_price" id="bk_price" placeholder="">
-		</div>
-		<div>
-			<label>페이지수</label> <input name="bk_pages" id="bk_pages" placeholder="">
-		</div>
+		<fieldset>
+			<legend>도서정보 등록</legend>
+			<div>
+				<label>ISBN</label> <input name="bk_isbn" id="bk_isbn"
+					placeholder="">
+			</div>
+			<div>
+				<label>도서명</label> <input name="bk_title" id="bk_isbn"
+					placeholder="">
+			</div>
+			<div>
+				<label>출판사</label> <input name="bk_ccode" id="bk_ccode"
+					placeholder="">
+			</div>
+			<div>
+				<label>저자</label> <input name="bk_acode" id="bk_acode"
+					placeholder="">
+			</div>
+			<div>
+				<label>출판년도</label> <input name="bk_date" id="bk_date"
+					placeholder="">
+			</div>
+			<div>
+				<label>가격</label> <input name="bk_price" id="bk_price"
+					placeholder="">
+			</div>
+			<div>
+				<label>페이지수</label> <input name="bk_pages" id="bk_pages"
+					placeholder="">
+			</div>
 		</fieldset>
 		<div class="btn_box">
-		<button type="button" class="btn_book_insert">도서등록</button>
-		<button type="reset" class="btn_book_reset">초기화</button>
-		<button type="button" class="btn_book_button">도서등록</button>
-	</div>
+			<div>
+				<button type="button" class="btn_save_book">저장</button>
+			</div>
+			<div>
+				<button type="reset" class="btn_reset_book">새로작성</button>
+			</div>
+			<div>
+				<button type="button" class="btn_list_book">List</button>
+			</div>
+		</div>
 	</form>
-	
+
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>

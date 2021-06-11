@@ -1,29 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>나의 홈페이지</title>
-</head>
+<%@ include file="/WEB-INF/views/include/include_head.jspf"%>
+
 <body>
-	<h1>출판사 정보 등록</h1>
-	<form method="POST">
-<!--<div><label>출판사코드</label><input name="cp_code"></div>  --> 	<!-- companyService에서 자동으로 코드를 완성하도록 만들었기 때문에 필요없어짐-->
-	<div><label>출판사명</label><input name="cp_title"></div>
-	<div><label>대표자명</label><input name="cp_ceo"></div>
-	<div><label>전화번호</label><input name="cp_tel"></div>
-	<div><label>주소</label><input name="cp_addr"></div>
-	<div><button>저장</button></div>
+	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
+	<form action="POST">
+		<fieldset>
+			<legend>도서정보 등록</legend>
+
+			<!--<div><label>출판사코드</label><input name="cp_code"></div>  -->
+			<!-- companyService에서 자동으로 코드를 완성하도록 만들었기 때문에 필요없어짐-->
+			<div>
+				<label>출판사명</label><input name="cp_title" id="cp_title">
+			</div>
+			<div>
+				<label>대표자명</label><input name="cp_ceo" id="cp_ceo">
+			</div>
+			<div>
+				<label>전화번호</label><input name="cp_tel" id="cp_tel" type="tel">
+			</div>
+			<div>
+				<label>주소</label><input name="cp_addr" id="cp_addr">
+			</div>
+			<div>
+				<label>주요장르</label><input name="cp_genre" id="cp_genre">
+			</div>
+			<div class="btn_box">
+				<button type="button" class="btn_save company">저장</button>
+			</div>
+			<div class="btn_box">
+				<button type="button" class="btn_reset company">새로작성</button>
+			</div>
+			<div class="btn_box">
+				<button type="button" class="btn_list company">list로</button>
+			</div>
+		</fieldset>
+
 	</form>
-	<div>
-	<lable>삭제할 코드</lable>
-	<input id="cpcode" name ="cpcode">
-	<button class="btn_delete">삭제</button>
-	
-	</div>
+
+	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 	<script>
 	// const : 상수를 선언하는 키워드
 	// 코드가 진행되는 동안 값이 변형되면 안되는 것

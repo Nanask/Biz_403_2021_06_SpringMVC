@@ -41,10 +41,19 @@ nav#main_nav ul {
    */
 nav#main_nav li {
 	padding: 5px 12px; /* top,bottom:5px, left, right:12px */
+	transition : 0.5s;
 }
 
 nav#main_nav li:first-child {
 	margin-left: 15px;
+}
+
+/*
+flex-item의 특정한 요소의 margin-left를 auto로 지정하면
+해당 요소부터 오른쪽으로 밀리는 layout을 만들 수 있다.
+*/
+nav#main_nav li:nth-of-type(5) {
+margin-left: auto;
 }
 
 nav#main_nav li:hover {

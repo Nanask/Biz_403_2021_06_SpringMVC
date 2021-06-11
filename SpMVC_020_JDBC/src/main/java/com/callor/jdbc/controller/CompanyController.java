@@ -23,7 +23,11 @@ public class CompanyController {
 		public CompanyController(CompanyDao compDao, CompanyService compService) {
 			this.compDao = compDao;
 			this.compService = compService;
-}		
+}	
+	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
+	public String list() {
+		return "company/list";
+	}
 		
 	// localhost:8080/jdbc/company/insert로 호출되는 함수
 	@RequestMapping(value="/insert", method=RequestMethod.GET)

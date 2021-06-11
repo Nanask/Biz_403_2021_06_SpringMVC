@@ -1,16 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="rootPath" value="${pageContext.request.contextPath}" />    
-    
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>나의 홈페이지</title>
-</head>
+<%@ include file="/WEB-INF/views/include/include_head.jspf"%>
+<style>
+	
+</style>
 <body>
-	<h1>저자정보 등록</h1>
-
+	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
+	<form action="POST">
+	<fieldset>
+	<legend>저자정보 등록</legend>
+		<div>
+			<label>CODE</label> <input name="au_code" id="au_code" placeholder="">
+		</div>
+		<div>
+			<label>저자명</label> <input name="au_name" id="au_name" placeholder="">
+		</div>
+		<div>
+			<label>전화번호</label> <input name="au_tel" id="au_tel" placeholder="" type="tel">
+		</div>
+		<div>
+			<label>주요장르</label> <input name="au_genre" id="au_genre" placeholder="">
+		</div>
+		</fieldset>
+		<div class="btn_box">
+		<button type="button" class="btn_save_author">저장</button>
+		<button type="reset" class="btn_reset_author">새로작성</button>
+		<button type="button" class="btn_list_author">List로</button>
+	</div>
+	</form>
+	
+	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
+<script>
+	document.querySelector("button.btn_book_insert").addEventListener("click",()=> {
+		location.href ="${rootPath}/books/insert";
+	})
+</script>
 </html>
