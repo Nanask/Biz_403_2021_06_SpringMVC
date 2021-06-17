@@ -10,6 +10,7 @@
 </style>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
+	<section class="main_sec">
 	<form action="POST">
 	<fieldset>
 	<legend>저자정보 등록</legend>
@@ -32,7 +33,7 @@
 		<button type="button" class="btn_list_author">List로</button>
 	</div>
 	</form>
-	
+	</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>

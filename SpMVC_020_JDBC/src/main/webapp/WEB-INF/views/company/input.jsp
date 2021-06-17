@@ -8,6 +8,7 @@
 
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
+	<section class="main_sec">
 	<form action="POST">
 		<fieldset>
 			<legend>도서정보 등록</legend>
@@ -41,7 +42,7 @@
 		</fieldset>
 
 	</form>
-
+</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 	<script>
 	// const : 상수를 선언하는 키워드

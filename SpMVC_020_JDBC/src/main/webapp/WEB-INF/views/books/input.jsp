@@ -9,6 +9,7 @@
 </style>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
+	<section class="main_sec">
 	<form action="POST">
 		<fieldset>
 			<legend>도서정보 등록</legend>
@@ -53,7 +54,7 @@
 			</div>
 		</div>
 	</form>
-
+</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
 </body>
 <script>

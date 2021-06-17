@@ -1,8 +1,13 @@
 package com.callor.jdbc.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.callor.jdbc.model.UserVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,12 +20,23 @@ public class BookController {
 	//value = {"/",""}는 /로 붙거나 ""로 붙어있는 것들을 인식하라
 	// localhost:8080/jdbc/books/
 	@RequestMapping(value = {"/",""},method=RequestMethod.GET)
-	public String books() {
+	public String books(HttpSession hSession, Model model) {
 		
+		//HttpSession에서 USERVO 정보 찾기
+		Object obj = hSession.getAttribute("USERVO");
+		UserVO userVO = (UserVO)obj;
+		if(userVO == null) {
+			
+			
+			model.addAttribute("MSG","LOGIN");
+			return "redirect:/member/login";
+		}
 		log.debug("Books Root");
 		return "books/list";
 		
 	}
+	
+	
 	@RequestMapping(value = "/insert",method = RequestMethod.GET)
 	public String insert() {
 		
