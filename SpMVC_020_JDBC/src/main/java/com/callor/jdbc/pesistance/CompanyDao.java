@@ -10,6 +10,7 @@ public interface CompanyDao extends GenericDao<CompanyVO, String>{
 	public List<CompanyVO> findByCName(String cname);
 	public List<CompanyVO> findByTel(String tel);
 	public List<CompanyVO> findByCeo(String ceo);
+	public CompanyVO findById(String cp_code);
 
 	
 	

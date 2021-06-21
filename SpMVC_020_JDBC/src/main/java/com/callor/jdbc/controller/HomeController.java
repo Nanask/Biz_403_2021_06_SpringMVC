@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.jdbc.pesistance.BookDao;
+import com.callor.jdbc.service.HomeService;
 import com.callor.jdbc.service.RentService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,8 +34,10 @@ public class HomeController {
 	 */
 	// protected final BookDao bookDao;
 	protected final RentService rentService;
-	public HomeController(RentService rentService) {
+	protected final HomeService homeService;
+	public HomeController(RentService rentService, HomeService homeService ) {
 		this.rentService = rentService;
+		this.homeService = homeService;
 	}
 	/*
 	 * 사용자에게 Response 할때 forward방법과 redirect방법이 있다.
@@ -72,6 +75,8 @@ public class HomeController {
 		model.addAttribute("user",user_name);
 		
 		rentService.viewBookAndComp();
+		
+		homeService.dashBoard(model);
 		return "home";
 		
 	}

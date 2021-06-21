@@ -42,8 +42,15 @@
 		<article></article>
 	</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf"%>
+<%-- footer로 modal 옮겨야 함 --%>	
+	<div id="modal">
+		<span>X</span>
+	</div>
 
+
+	
 
 </body>
+
 
 </html>

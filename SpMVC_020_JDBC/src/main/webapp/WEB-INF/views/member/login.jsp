@@ -12,6 +12,15 @@
 		background-color: #191919;
 		text-align: center;
 		border-radius: 10px;
+		z-index: 500;
+		/*z-index: 500;를 이용해 모달 앞으로 화면이 나오게 만들었음*/
+		
+		position:absolute;
+		top:50%;
+		left:50%;
+		transform:translate(-50%, -50%);
+		animation-name : aniTopDown;
+		animation-duration:0.8s;
 	}
 	form#login_form h2 {
 		color: white;
@@ -77,6 +86,23 @@
 		font-size: 20px;
 		padding: 5px;
 	}
+	
+@keyframes aniTopDown {
+		from {
+			top:-300px;
+			opacity: 0;
+		}
+		to {
+			top:50%;
+			transform: translateY(-50%);
+			opacity: 1;
+		}
+		
+	}
+	div#modal {
+		display:block;
+	}
+	
 </style>
 
 <body>

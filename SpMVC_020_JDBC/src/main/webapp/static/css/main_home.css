@@ -32,6 +32,9 @@ section#main_sec article ul {
 section#main_sec article li {
 	margin: 0 20px;
 	padding: 0 10px;
+	
+	max-width: 0;
+	overflow: hidden;
 }
 
 section#ad_sec {
@@ -107,3 +110,4 @@ section#ad_sec article:nth-of-type(n) {
 home.jsp의 중간 부분 이미지를 표현하는 부분의 css는 rootPath문제로 여기에 둘 수 없어서
 include_header.jspf 파일에 옮겼다.
 */
+

@@ -25,12 +25,14 @@ public class BookController {
 		//HttpSession에서 USERVO 정보 찾기
 		Object obj = hSession.getAttribute("USERVO");
 		UserVO userVO = (UserVO)obj;
-		if(userVO == null) {
-			
-			
-			model.addAttribute("MSG","LOGIN");
-			return "redirect:/member/login";
-		}
+		
+		//유저정보가 없으면
+//		if(userVO == null) {
+//			
+//			
+//			model.addAttribute("MSG","LOGIN");
+//			return "redirect:/member/login";
+//		}
 		log.debug("Books Root");
 		return "books/list";
 		

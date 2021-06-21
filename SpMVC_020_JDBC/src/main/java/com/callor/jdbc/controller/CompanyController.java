@@ -1,5 +1,7 @@
 package com.callor.jdbc.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -34,6 +36,17 @@ public class CompanyController {
 			model.addAttribute("MSG","LOGIN");
 			return "redirect:/member/login";
 		}
+		
+		List<CompanyVO> compList = compService.selectAll();
+		log.debug("출판사 정보 가져오기: {} ", compList.toString());
+		model.addAttribute("COMPS",compList);
+		
+		return "company/list";
+	}
+	@RequestMapping(value="/List", method=RequestMethod.GET)
+	public String getList(Model model) {
+		List<CompanyVO> compList = compService.selectAll();
+		model.addAttribute("COMPS",compList);
 		
 		return "company/list";
 	}
