@@ -43,12 +43,18 @@ public class CompanyController {
 		
 		return "company/list";
 	}
-	@RequestMapping(value="/List", method=RequestMethod.GET)
-	public String getList(Model model) {
-		List<CompanyVO> compList = compService.selectAll();
-		model.addAttribute("COMPS",compList);
-		
-		return "company/list";
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+		public String getList(
+				@RequestParam(name="cp_title",required = false, defaultValue = "")
+				String searchText, Model model) {
+
+			List<CompanyVO> compList = null;
+			if(searchText == null || searchText.trim().equals("")) {
+				compList = compService.selectAll();
+			} else {
+				compList = compService.findByTitleAndCeoAndTel(searchText);
+			}
+		return "company/search";
 	}
 		
 	// localhost:8080/jdbc/company/insert로 호출되는 함수

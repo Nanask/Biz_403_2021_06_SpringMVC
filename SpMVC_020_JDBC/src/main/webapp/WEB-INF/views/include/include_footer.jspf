@@ -17,3 +17,11 @@ address {
 	<footer>
 		<address>CopyRight &copy; ybhag1005@daum.net</address>
 	</footer>
+	
+	<div id="modal">
+		<span>X</span>
+	</div>
+
+
+	
+	

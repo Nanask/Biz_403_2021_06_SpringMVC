@@ -7,14 +7,14 @@
 }
 
 body {
-	dispayl:flex;
+	dispayl: flex;
 	flex-direction: column;
-	width:100%;
+	width: 100%;
 	height: 100vh;
 }
 
 section.main_sec {
-	flex:auto;
+	flex: auto;
 	overflow: auto;
 	/*화면이 넘어가면 스크롤 생기기*/
 }
@@ -45,37 +45,33 @@ table {
 	border-spacing: 0;
 	width: 90%;
 	margin: 0 auto;
-	
 }
 
-table,th,td {
-	border-top : 1px solid #aaa;
+table, th, td {
+	border-top: 1px solid #aaa;
 	padding: 5px 8px;
 }
+
 table td {
-	margin-left: 20px;
-	text-align: center;
-	
-	width:auto;
+	margin-left: 30px;
+	text-align: left;
+	padding-left: 10px;
+	max-width: 0;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
-
-table tr:last-child td{
+table tr:last-child td {
 	border-bottom: 1px solid #aaa;
-	
 }
 
 table tr:nth-child(odd) {
 	background-color: #eee;
-	
 }
 
 table tr:nth-child(even) {
 	background-color: #ddd;
-	
 }
 
 table tr:hover {
@@ -97,32 +93,36 @@ button {
 	outline: 0;
 	border: 0;
 	border-radius: 5px;
-	
 }
 
 button:hover {
-	box-shadow: 2px 2px 2px rgba(0,0,0,0.7);
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 	cursor: pointer;
 }
+
 button.btn_insert {
-		background-color: blue;
-		color: white;
+	background-color: blue;
+	color: white;
 }
+
 button.btn_save {
-		background-color: blue;
-		color: white;
+	background-color: blue;
+	color: white;
 }
+
 button.btn_reset {
-		background-color: green;
-		color: white;
+	background-color: green;
+	color: white;
 }
+
 button.btn_list {
-		background-color: orange;
-		color: white;
+	background-color: orange;
+	color: white;
 }
+
 button.btn_delete {
-		background-color: red;
-		color: white;
+	background-color: red;
+	color: white;
 }
 
 div#modal {
@@ -130,7 +130,7 @@ div#modal {
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom:0;
+	bottom: 0;
 	background-color: black;
 	opacity: 0.5;
 	z-index: 100;
@@ -139,7 +139,8 @@ div#modal {
 	*/
 	display: none;
 }
-div#modal span{
+
+div#modal span {
 	position: absolute;
 	display: inline-block;
 	top: 30px;
@@ -148,11 +149,37 @@ div#modal span{
 	color: white;
 	font-weight: 900;
 	border-radius: 50%;
-	padding:10px 20px;
-	transition : 0.6s;
+	padding: 10px 20px;
+	transition: 0.6s;
 }
 
 div#modal span:hover {
 	background-color: white;
 	cursor: pointer;
+}
+
+section.search_sec {
+	/*
+		바깥쪽 box의 position의 fiexd로 되어있기 때문에 내부의 box를 바깥 box의 중앙에 배치하기 위하여
+		position을 absolute로 설정하고 위치를 지정하였다.
+		상단에 있는 것이 fixed로 고정되어 있기 때문에 
+		justify-content, align-content가 적용이 되지 않았다. 원래는 flex로 적용을 하고 저 두가지를 적용시켜도 가운데로 위치할 수 있다.
+		*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	/* 자기 몸체크기의 x, y 방향으로 50% 만큼 후진 */
+	transform: translate(-50%, -50%);
+	background-color: white;
+	opacity: 1;
+	width: 80%;
+	height: 80%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	overflow: auto;
+}
+
+section.search_sec table {
+	width: 90%;
 }

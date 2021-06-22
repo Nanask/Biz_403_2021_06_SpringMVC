@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.jdbc.model.AuthorVO;
 import com.callor.jdbc.model.UserVO;
@@ -56,6 +57,34 @@ public class AuthorController {
 		model.addAttribute("AUTH_LIST",auList);
 		
 		return "author/list";
+	}
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public String search(@RequestParam(name="au_name", required= false, defaultValue = "") String au_name ,Model model) {
+		if(au_name == null || au_name.equals("")) {
+			
+			List<AuthorVO> authorList = auService.selectAll();
+			model.addAttribute("AUTH_LIST",authorList);
+			
+		}else {
+			List<AuthorVO> authorList = auService.findByNameAndTel(au_name);
+			model.addAttribute("AUTH_LIST",authorList);
+			
+		}
+		
+		//required= false는 그 값이 오지 않아도 오류내지 말아라 
+		//defaultValue = ""는 그 값이 없다면 그냥 빈칸으로 처리하라
+		
+		/*
+		 * cp_title을 Req로부터 받아 변수에 세팅을 하는데 Req를 할 때 cp_title 변수를 보내지 않으면 400 오류가 발생한다.
+		 * 400 오류는 서버 App 디버깅 과정에서 상당히 관리하기 어려운 오류가 된다.
+		 * 
+		 * 단순한 변수(VO, DTO, MAP 형식이 아닌 단일 변수)일 경우는 
+		 * @RequestParam의 required옵션을 false로 선언하고 default값을 임의로 설정해 두면
+		 * 코드 내에서 핸들링을 할 수 있다.
+		 * 
+		 */
+		
+		return "author/search";
 	}
 
 	@RequestMapping(value="/insert",method=RequestMethod.GET)

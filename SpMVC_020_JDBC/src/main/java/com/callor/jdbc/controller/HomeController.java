@@ -55,6 +55,8 @@ public class HomeController {
 		log.debug("user_name : {}", user_name);
 		log.debug("user_email : {}", user_email);
 		
+		homeService.dashBoard(model);
+		
 		/*
 		 * class Spring__ {
 		 * 		main() {
@@ -76,7 +78,7 @@ public class HomeController {
 		
 		rentService.viewBookAndComp();
 		
-		homeService.dashBoard(model);
+
 		return "home";
 		
 	}

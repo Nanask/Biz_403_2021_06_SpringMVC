@@ -4,8 +4,16 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
+<script>
+   var rootPath = "${rootPath}"
+</script>
 <%@ include file="/WEB-INF/views/include/include_head.jspf"%>
-
+<style>
+   form#book_input input.search {
+      width:30%;
+   }
+</style>
+<script src="${rootPath}/static/js/book_input.js?ver=2021-06-21-002"></script>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
 	<section class="main_sec">

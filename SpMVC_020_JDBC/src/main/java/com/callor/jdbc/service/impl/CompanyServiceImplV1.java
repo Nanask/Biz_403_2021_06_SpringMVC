@@ -65,5 +65,10 @@ public class CompanyServiceImplV1 implements CompanyService {
 		// TODO Auto-generated method stub
 		return compDao.findById(cp_code.trim());
 	}
+	@Override
+	public List<CompanyVO> findByTitleAndCeoAndTel(String searchText) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

@@ -28,9 +28,9 @@
 		</div>
 		</fieldset>
 		<div class="btn_box">
-		<button type="button" class="btn_save_author">저장</button>
-		<button type="reset" class="btn_reset_author">새로작성</button>
-		<button type="button" class="btn_list_author">List로</button>
+		<button type="button" class="btn_save author">저장</button>
+		<button type="reset" class="btn_reset author">새로작성</button>
+		<button type="button" class="btn_list author">List로</button>
 	</div>
 	</form>
 	</section>
