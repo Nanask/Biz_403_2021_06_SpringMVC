@@ -16,7 +16,7 @@ section#main_sec article {
 	border: 1px solid green;
 	margin: 6px 3px;
 	padding: 5px;
-	width:100%; 
+	width:30%; 
 }
 /*
 article box에 지정된 background를 box에 가득차도록 하고, 이미지는 box 크기만큼 가로세로를 조절하여 채워라
@@ -32,8 +32,11 @@ section#main_sec article ul {
 section#main_sec article li {
 	margin: 0 20px;
 	padding: 0 10px;
-	width: 100%;
-/*	max-width: 0; */
+	/*
+	li tag에 ellipsis를 적용하기 위하여 article box의 width를 위에서 먼저 지정
+	
+	감싸고 있는 box의 width를 지정하면 내부의 tag는 자체적으로 모습을 갖춘다.
+	*/
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
