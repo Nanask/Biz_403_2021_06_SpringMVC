@@ -24,6 +24,7 @@ form#book_input span.name {
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf"%>
 	<section class="main_sec">
+<<<<<<< Updated upstream
 		<form id="book_input" method="POST">
 			<fieldset>
 				<legend>도서정보 등록</legend>
@@ -66,6 +67,49 @@ form#book_input span.name {
 				<div>
 					<button type="button" class="btn_list book">List</button>
 				</div>
+=======
+	<form action="POST">
+		<fieldset>
+			<legend>도서정보 등록</legend>
+			<div>
+				<label>ISBN</label> <input name="bk_isbn" id="bk_isbn"
+					placeholder="">
+			</div>
+			<div>
+				<label>도서명</label> <input name="bk_title" id="bk_isbn"
+					placeholder="">
+			</div>
+			<div>
+				<label>출판사</label> <input name="bk_ccode" id="bk_ccode"
+					placeholder="">
+			</div>
+			<div>
+				<label>저자</label> <input name="bk_acode" id="bk_acode"
+					placeholder="">
+			</div>
+			<div>
+				<label>출판년도</label> <input name="bk_date" id="bk_date"
+					placeholder="">
+			</div>
+			<div>
+				<label>가격</label> <input name="bk_price" id="bk_price"
+					placeholder="">
+			</div>
+			<div>
+				<label>페이지수</label> <input name="bk_pages" id="bk_pages"
+					placeholder="">
+			</div>
+		</fieldset>
+		<div class="btn_box">
+			<div>
+				<button type="button" class="btn_save book">저장</button>
+			</div>
+			<div>
+				<button type="reset" class="btn_reset book">새로작성</button>
+			</div>
+			<div>
+				<button type="button" class="btn_list book">List</button>
+>>>>>>> Stashed changes
 			</div>
 		</form>
 	</section>

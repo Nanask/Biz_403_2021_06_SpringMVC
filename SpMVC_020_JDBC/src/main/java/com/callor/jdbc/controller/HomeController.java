@@ -74,7 +74,10 @@ public class HomeController {
 		 */
 		
 //		모델에서 user라는 변수를 만들고 username을 세팅해서 home으로 보내라
+		
+		// 물어봅시다 테스트코드인가?
 		model.addAttribute("user",user_name);
+		
 		
 		rentService.viewBookAndComp();
 		

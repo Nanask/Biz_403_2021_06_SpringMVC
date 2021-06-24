@@ -13,9 +13,9 @@ public class UserDaoImplV1 implements UserDao{
 
 	protected final JdbcTemplate jdbcTemplate;
 	
-	// 컴퍼런트로 만들어져 있는 생성자만 가능
-	//생성자에게 주입받는 객체
-//	생성자에게 주입받아 초기화 하는 객체는 @Component로 선언된 클래스만 가능
+	// 而댄띁�윴�듃濡� 留뚮뱾�뼱�졇 �엳�뒗 �깮�꽦�옄留� 媛��뒫
+	//�깮�꽦�옄�뿉寃� 二쇱엯諛쏅뒗 媛앹껜
+//	�깮�꽦�옄�뿉寃� 二쇱엯諛쏆븘 珥덇린�솕 �븯�뒗 媛앹껜�뒗 @Component濡� �꽑�뼵�맂 �겢�옒�뒪留� 媛��뒫
 	public UserDaoImplV1(JdbcTemplate jdbcTemplate) {
 		// TODO Auto-generated constructor stub
 		this.jdbcTemplate = jdbcTemplate;
@@ -36,7 +36,10 @@ public class UserDaoImplV1 implements UserDao{
 		
 		Object[] prams = new Object[] {username};
 		
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 		
 		return null;
 	}
@@ -48,7 +51,7 @@ public class UserDaoImplV1 implements UserDao{
 		String sql = " INSERT INTO tbl_member (username, password)";
 		sql = " VALUE( ? , ? ) ";
 		
-		// JdbcTemplate으로 query를 전송할 때 전달할 값이 몇개 안될때는 Object[] 배열로 만들지 않아도 된다.
+		// JdbcTemplate�쑝濡� query瑜� �쟾�넚�븷 �븣 �쟾�떖�븷 媛믪씠 紐뉕컻 �븞�맆�븣�뒗 Object[] 諛곗뿴濡� 留뚮뱾吏� �븡�븘�룄 �맂�떎.
 		
 		return jdbcTemplate.update(sql, vo.getUsername(), vo.getPassword());
 		

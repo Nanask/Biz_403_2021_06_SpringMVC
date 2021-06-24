@@ -25,6 +25,7 @@ public class MemberController {
 		this.mService = mService;
 	}
 
+	// 화면을 띄워줌
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(name = "MSG", required = false) String msg,Model model) {
 		

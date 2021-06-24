@@ -34,8 +34,8 @@ public class AuthorController {
 		if(userVO == null) {
 			model.addAttribute("MSG","LOGIN");
 			return "redirect:/member/login";
-			
 		}
+<<<<<<< Updated upstream
 		
 		List<AuthorVO> auList = auService.selectAll();
 		log.debug("저자정보: {}", auList.toString());
@@ -87,6 +87,11 @@ public class AuthorController {
 		return "author/search";
 	}
 
+=======
+		return "author/list";
+	}
+	
+>>>>>>> Stashed changes
 	@RequestMapping(value="/insert",method=RequestMethod.GET)
 	public String insert() {
 		return "author/input";
