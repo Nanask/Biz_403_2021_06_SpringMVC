@@ -199,8 +199,6 @@ button:hover {
 			<c:otherwise>
 			<%@ include file="/WEB-INF/views/main.jsp"%>
 		</c:otherwise>
-	
-		
 		</c:choose>
 	</section>
 </body>
