@@ -12,7 +12,7 @@
 	<form id="student_input" method="POST">
 		<fieldset>
 			<div>
-				<label>학번</label><input name="st_num" id="st_num"
+				<label>학번</label><input name="st_num" id="st_num" value=<c:out value="${ST.st_num}" default="0" />
 					placeholder="학번을 입력하세요" />
 			</div>
 			<div>
@@ -39,13 +39,15 @@
 				<button type="button" class="save">저장</button>
 				<button type="reset" class="reset">초기화</button>
 				<button type="button" class="list">리스트로</button>
+				<button type="button" class="student home">처음으로</button>
 			</div>
 		</fieldset>
 	</form>
 <script>
-	let doc = document
+let doc = document
+	// 이벤트 핸들러에서 사용할 함수 등록
 	
-	doc.querySelector("button.save").addEventListener("click", (e) =>{
+	const student_submit = () => {
 		
 		let st_num = doc.querySelector("input#st_num")
 		let st_name = doc.querySelector("input#st_name")
@@ -72,11 +74,30 @@
 		}
 		
 		doc.querySelector("form#student_input").submit()
-		
-		
+	
+	}
+
+	
+	doc.querySelector("form#student_input").addEventListener("click", (e) => {
+		let target = e.target
+		if(target.tagName === "BUTTON") {
+			/*
+			tag에 class를 지정할 때 1개만 지정할 수 있지만 다수의 class를 지정하는 경우도 있다.
+			이때는 if(target.className === "className")형식으로 class를 검사할 수 있다.
+			이럴때는 includes를 사용하여 포함된 클래스를 검사해야 한다.
+			*/
+			if(target.className.includes("save")) {
+				// 여기에 Event 처리 코드를 작성할 수 있지만 
+				// if문 내에 코드가 다소 복잡해지므로 함수를 먼저 등록하고 함수를 호출하는 방식으로 작성
+				student_submit();
+			}else if(target.className.includes("list")) {
+				location.href ="${rootPath}/student"
+			}
+		}
 	})
 	
-	
-	
+		
+	//doc.querySelector("button.save").addEventListener("click", (e) =>{
+		
 	
 </script>

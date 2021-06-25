@@ -98,6 +98,30 @@ form button.list {
 	color: white;
 }
 
+form button.student home {
+	background-color: black;
+	color: white;
+}
+button.insert {
+	background-color: rgba(0,0,200,1);
+	color: white;
+}
+
+form button.update {
+	background-color: green;
+	color: white;
+}
+form button.delete {
+	background-color: yellow;
+	color: white;
+}
+
+button.student.list {
+	background-color: orange;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+}
+
 h2 {
 	width: 90%;
 	color: white;
@@ -191,10 +215,13 @@ button:hover {
 
 				<%@ include file="/WEB-INF/views/student/list.jsp"%>
 			</c:when>
-			
 			<c:when test="${BODY =='STUDENT_INPUT' }">
 			
 				<%@ include file="/WEB-INF/views/student/input.jsp"%>
+			</c:when>
+						<c:when test="${BODY =='STUDENT_DETAIL' }">
+			
+				<%@ include file="/WEB-INF/views/student/detail.jsp"%>
 			</c:when>
 			<c:otherwise>
 			<%@ include file="/WEB-INF/views/main.jsp"%>
@@ -230,6 +257,23 @@ button:hover {
 		home.addEventListener("click", (e) => {
 			location.href="${rootPath}/student/insert"	// 홈으로 가도록 설정
 		})
+	}
+	
+	let table = document.querySelector("table.detail")
+	if(table != null) {
+		table.addEventListener("click", (e) => {
+			let target = e.target
+			let tagName= target.tagName
+			
+			if(tagName === "TD") {
+				let tr = target.closest("TR")
+				let stNum = tr.dataset.stnum
+				location.href = "${rootPath}/student/detail?st_num=" +stNum
+
+			}
+			
+		})
+		
 	}
 		
 </script>

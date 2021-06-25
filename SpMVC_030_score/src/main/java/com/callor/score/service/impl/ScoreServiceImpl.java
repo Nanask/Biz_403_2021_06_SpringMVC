@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.callor.score.dao.ext.ScoreDao;
 import com.callor.score.model.ScoreDTO;
+import com.callor.score.model.SubjectAndScoreDTO;
 import com.callor.score.service.ScoreService;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,15 @@ public class ScoreServiceImpl implements ScoreService{
 		List<ScoreDTO> stList = scDao.selectViewAll(); 
 		
 		return stList;
+	}
+
+
+	@Override
+	public List<SubjectAndScoreDTO> selectScore(String st_num) {
+		// TODO Auto-generated method stub
+		
+		List<SubjectAndScoreDTO> ssList = scDao.selectSubjectAndScore(st_num);
+		return ssList;
 	}
 	
 
