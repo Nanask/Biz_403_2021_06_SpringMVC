@@ -5,7 +5,7 @@
 <mapper namespace="com.callor.score.dao.ext.StudentDao">
 
 	<select id="selectAll" resultType="StudentVO">
-		SELECT * FROM tbl_student LIMIT 10
+		SELECT * FROM tbl_student
 	</select>
 	<select id="findById" resultType="StudentVO">
 		SELECT * FROM tbl_student WHERE st_num = #{st_num}

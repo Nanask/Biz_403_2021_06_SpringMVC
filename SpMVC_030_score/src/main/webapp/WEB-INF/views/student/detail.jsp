@@ -64,7 +64,7 @@
 		<div class="btn_box">
 		<%-- submit을 쓰면 post로 값을 보낸다. --%>
 			<button type="submit" class="save">저장</button>
-			<button type="button" class="list">리스트로</button>
+			<button type="button" class="student list">리스트로</button>
 			<button type="button" class="student home">처음으로</button>
 		</div>
 	</fieldset>

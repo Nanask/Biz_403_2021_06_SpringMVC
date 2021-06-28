@@ -42,7 +42,7 @@ public class HomeController {
 		
 		
 		
-		return "redirect:/score";
+		return "redirect:/student";
 		// redirect:/ localhost:/score  
 //		홈을 열면 성적화면으로 바로 보여주기 위한 설정
 	}

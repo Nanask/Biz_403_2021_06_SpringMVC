@@ -39,6 +39,42 @@ header {
 	/*height: 30vh;가 없다면 2rem으로 표시했을 때 중앙으로 정렬되게 할 수 있음*/
 }
 
+nav {
+      background-color: black;
+      color: white;
+      width: 100wv;
+   }
+   
+   nav.fixed {
+      position: fixed;
+      top: 0;
+      left : 0;
+      right: 10px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+   }
+   
+   nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0 20px;
+   }
+   
+   nav li {
+      padding: 16px 12px;
+      border-bottom: 3px solid transparent;
+      transition: 1s;
+   }
+   
+   nav li:hover {
+      border-bottom: 3px solid gold;
+      cursor: pointer;
+   }
+   
+   nav li:nth-of-type(2) {
+      margin-left: auto;
+   }
+
 section#main_sec {
 	flex: 1;
 	width: 100wv;
@@ -47,6 +83,13 @@ section#main_sec {
 	background: linear-gradient(to top,#67B26F,#4ca2cd);
 	background-size: 100% 100%;
 	background-attachment: fixed;
+	
+	/*
+	header와 nav를 화면에 고정하고
+	data가 보이는 부분만 scoll하기 위하여 
+	section#main_sec에 overflow 속성 부여하기
+	overflow : auto;
+	*/
 }
 
 form {
@@ -205,6 +248,14 @@ button:hover {
 		<h1>대한고교 성적처리</h1>
 		<p>대한고교 성적처리 시스템 2021</p>
 	</header>
+	<nav id="main_nav">
+      <ul>
+         <li>HOME</li>
+         <li>Login</li>
+         <li>Logout</li>
+         <li>관리자</li>
+      </ul>
+   </nav>
 	<section id="main_sec">
 		<c:choose>
 			<c:when test="${BODY =='SCORE_VIEW' }">
@@ -230,6 +281,7 @@ button:hover {
 	</section>
 </body>
 <script>
+
 /*
  * js 코드에서 event를 등록할 때 현재 화면에 없는 DOM 요소에 addEvent를 설정하면
  * 없는 함수라는 오류가 발생함
@@ -275,6 +327,34 @@ button:hover {
 		})
 		
 	}
+	
+	let main_nav = document.querySelector("nav#main_nav")
+	let main_header = document.querySelector("header")
+	let main_header_height = main_header.header.offsetHeight;
+
+	document.addEventListener("scroll", ()=> {
+		
+		// HTML 문서 전체의 크기, 좌표 등을 추출
+	   let doc_bound = document.querySelector("HTML")
+	   .getBoundingClientRect();
+		
+	   let doc_top = doc_bound.top
+	   
+	   /*
+	   화면이 아래방향으로 스크롤될 때 화면 문서의 top 좌표를 추출하여
+	   header boxdml shvdldhk qlry
+	   header box,의 높이에 1을 곱하고 그 값보다 작아지면
+	   == Header box가 화면에서 사라지면
+	   nav에 fixed라는 class를 제거하여 원래 모습으로 다시 보이기
+	   */
+	   
+	   if(doc_top < main_header_height * -1) {
+		   	main_nav.classList.add("fixed")
+	   }else{
+		   main_nav.classList.remove("fixed")
+	   }
+	})
+
 		
 </script>
 </html>
