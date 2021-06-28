@@ -46,7 +46,7 @@
 	
 	<div class="btn_box">
 		<button class="score insert">성적등록</button>
-		<button class="score student ">학생정보 바로가기</button>
+		<button class="score student list">학생정보 바로가기</button>
 	</div>
 	
 	<script>

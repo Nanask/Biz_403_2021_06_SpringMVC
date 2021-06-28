@@ -35,6 +35,21 @@
 	<bean class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
+	
+	<!-- transaction을 관리할 코드 -->
+	<tx:annotation-driven/>
+	<!-- 
+	Spring.jdbc에서 transaction 설정하기
+	DataSourceTransactionManager를 bean으로 선언하기
+	이때 id는 transactionManager로 설정하기
+	dataSource 속성에 위에서 선언한 dataSource를 ref로 지정하기
+	tx:annotation-driven
+	어노테이션을 이용해 tx를 관리하겠다라는 의미
+	이렇게 해놓으면 상당부분을 spring에 맡길 수 있음
+	 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"/>
+	</bean>
 
 
 
