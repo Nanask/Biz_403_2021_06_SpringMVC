@@ -18,7 +18,7 @@ import com.callor.book.model.BookDTO;
  * Naver에 받을 데이터에 대한 VO를 만들어야 하는데 각각 도서, 뉴스, 영화 데이터가 조금씩 달라서 3개의 VO를 생성해야 한다
  * 그래서 인터페이스에 Generic을 선언하여 VO별로 필요에 따라 클래스를 만들 수 있도록 한다.
  */
-public interface NaverService<T> {
+public interface NaverGenericService<T> {
 
    // 검색문자열을 받아서 검색을 위한 URL을 생성하여 return
    public String queryURL(String search_text);

@@ -1,4 +1,4 @@
-package com.callor.book.service.impl;
+package com.callor.book.service.impl.books;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,13 +19,13 @@ import org.springframework.stereotype.Service;
 
 import com.callor.book.config.NaverSecret;
 import com.callor.book.model.BookDTO;
-import com.callor.book.service.NaverService;
+import com.callor.book.service.NaverBookService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Service
-public class NaverServiceImpl implements NaverService<BookDTO>{
+@Service("naverBookServiceV1")
+public class NaverBookServiceImpl implements NaverBookService{
 	/*
 	 * naver에 요청하기
 	 * BookURL + "?query=" + 검색문자열
@@ -134,7 +134,7 @@ public class NaverServiceImpl implements NaverService<BookDTO>{
 		            
 		            sBuffer.append(reader);
 		         }
-		         
+		         log.debug(sBuffer.toString());
 		         return sBuffer.toString();
 		  
 		   }
