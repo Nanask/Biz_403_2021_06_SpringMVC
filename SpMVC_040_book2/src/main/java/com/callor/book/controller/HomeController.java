@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.callor.book.config.NaverQualifier;
 import com.callor.book.model.BookDTO;
-import com.callor.book.service.NaverBookService;
+import com.callor.book.service.NaverAbstractService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,8 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class HomeController {
 
-   @Qualifier("naverBookServiceV2")
-   protected final NaverBookService nBookService;
+   @Qualifier(NaverQualifier.NAVER_BOOK_SERVICE_V2)
+   protected final NaverAbstractService<BookDTO> nBookService;
 
    @RequestMapping(value = "/", method = RequestMethod.GET)
    public String home() {
@@ -56,7 +57,7 @@ public class HomeController {
       if (search != null && !search.equals("")) {
 
          String queryURL = nBookService.queryURL(search.trim());
-         String jsonString = nBookService.getJsonString(queryURL);
+         String jsonString = nBookService.getjsonString(queryURL);
          List<BookDTO> bookList = nBookService.getNaverList(jsonString);
          model.addAttribute("BOOKS", bookList);
       }
