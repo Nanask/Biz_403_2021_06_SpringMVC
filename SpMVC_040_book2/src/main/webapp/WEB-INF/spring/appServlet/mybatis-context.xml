@@ -39,5 +39,5 @@
 		<property name="dataSource" ref="ds"></property>
 	</bean>
 	<mybatis-spring:scan
-		base-package="com.callor.book.dao" />
+		base-package="com.callor.book.dao.ext" />
 </beans>

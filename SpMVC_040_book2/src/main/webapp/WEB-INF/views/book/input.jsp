@@ -31,7 +31,10 @@
 	</div>
 	<div>
 		<label>출판일</label>
-		<input name="pubdate" />
+		<input
+			name="pubdate"
+			id="pubdate"
+			placeholder="출판일" />
 	</div>
 	<div>
 		<label>정가</label>

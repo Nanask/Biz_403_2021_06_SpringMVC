@@ -16,7 +16,7 @@
 				<strong>저자</strong>${BOOK.author}</p>
 			<p class="publisher">
 				<strong>출판사 : </strong>${BOOK.publisher}</p>
-			<button class="insert">내 서재등록</button>
+			<a href="${rootPath}/book/insert/${BOOK.isbn}">책 등록</a>
 		</div>
 	</div>
 </c:forEach>

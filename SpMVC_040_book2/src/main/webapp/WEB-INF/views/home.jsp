@@ -25,10 +25,11 @@ p b {
 }
 
 nav#main_nav {
-	background-color: #2DB400;
+	background-color:#00C43B; 
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-size: 100% 100%;
 }
 
 nav#main_nav form {
@@ -113,6 +114,23 @@ a {
 a:hover {
 	color: green;
 }
+
+table {
+	width: 95%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin:0 auto;
+}
+
+th, td {
+	white-space: nowrap;
+	padding: 16px 12px;
+	border-top: 1px solid #ddd;
+}
+/* 가장 끝에 나타난 td에는 아래쪽에도 선을 만들기*/
+tr:last-child td{
+	border-bottom: 1px solid #ddd;
+}
 </style>
 </head>
 <body>
@@ -143,10 +161,14 @@ a:hover {
 		</form>
 	</nav>
 	<section class="content_box">
-		<%@ include file="/WEB-INF/views/book_list.jsp"%>
+		<%@ include file="/WEB-INF/views/book/book_list.jsp"%>
 		<%@ include file="/WEB-INF/views/movie_list.jsp"%>
 		<%@ include file="/WEB-INF/views/news_list.jsp"%>
 		<%-- if문을 쓰지 않는 이유는 각각의 item을 갖고 있기 때문에 일치 하지 않으면 바뀌지 않으므로 if문을 사용하지 않아도 된다. --%>
+		
+		<c:if test="${not empty MY_BOOKS}">
+		<%@ include file ="/WEB-INF/views/book/list_view.jsp" %>
+		</c:if>
 	</section>
 
 </body>

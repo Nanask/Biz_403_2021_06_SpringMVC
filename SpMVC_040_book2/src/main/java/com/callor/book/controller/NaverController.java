@@ -2,6 +2,7 @@ package com.callor.book.controller;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.List;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.book.config.NaverQualifier;
+import com.callor.book.model.BookDTO;
+import com.callor.book.service.BookService;
 import com.callor.book.service.impl.NaverMainService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,6 +29,8 @@ public class NaverController {
 	
 	@Qualifier(NaverQualifier.NAVER_MAIN_SERVICE_V1)
 	protected final NaverMainService nService;
+	
+//	protected final BookService myBookService;
 
 	/*
 	 * web client에서 서버로 Request를 할 때 어떤 데이터를 보내는 방법
@@ -56,6 +61,9 @@ public class NaverController {
 		
 		log.debug("CAT:{}", cat);
 		model.addAttribute("CAT",cat);
+		
+//		List<BookDTO> myBookList = myBookService.selectAll();
+//		model.addAttribute("MY_BOOKS", myBookList);
 		
 		nService.NaverGetData(cat, search, model);
 //		NaverGetData에서 cat과 search를 해서 model에 담아두도록 함

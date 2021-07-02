@@ -24,6 +24,24 @@ import com.callor.book.service.NaverAbstractService;
 
 import lombok.extern.slf4j.Slf4j;
 
+/*
+ * NaverAbstractService 추상클래스를 상속받아 구현(된) 클래스
+ * 추상클래스에 사전 정의된 jsonString() method 코드는 
+ * 직접 작성하지 않고, 사용할수 있다.
+ * 		jsonString()
+ * 
+ * 추상메서드는 반드시 구현해야 한다
+ * 		queryURL(), getNaverList()
+ * 
+ * 다음과 같은 형식으로 사용가능하다
+ * 		NaverAbstractService nService 
+ * 			= new NaverServiceImplV1()
+ * 		nService.queryURL()
+ * 		nService.jsonString()
+ * 		nService.getNaverList()
+ * 
+ */
+
 @Slf4j
 @Service(NaverQualifier.NAVER_BOOK_SERVICE_V1)
 public class NaverBookServiceImpl extends NaverAbstractService<BookDTO>{
@@ -59,6 +77,13 @@ public class NaverBookServiceImpl extends NaverAbstractService<BookDTO>{
 		
 		return queryURL.toString();
 	}
+	/*
+	 * 네이버에서 받은 JSonString을 
+	 * parsing하여 List<BookDTO>에 담아서 return
+	 * 
+	 * json-simple을 사용하여 parsing하기
+	 * 
+	 */
 
 
 	@Override
