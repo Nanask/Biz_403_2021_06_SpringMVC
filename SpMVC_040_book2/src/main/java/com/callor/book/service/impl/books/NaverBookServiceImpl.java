@@ -87,7 +87,7 @@ public class NaverBookServiceImpl extends NaverAbstractService<BookDTO>{
 
 
 	@Override
-	public List<BookDTO> getNaverList(String jsonString) throws ParseException {
+	public List<BookDTO> getNaverList(String jsonString) throws Exception {
 //		1. json Parsing 도구 선언
 		
 		JSONParser jParser = new JSONParser();

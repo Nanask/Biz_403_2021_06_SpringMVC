@@ -32,7 +32,7 @@ public class BookController {
 
 	@RequestMapping(value="/insert/{isbn}",method=RequestMethod.GET)
 	public String insert(
-			@PathVariable("isbn") String isbn, Model mode) throws IOException, ParseException {
+			@PathVariable("isbn") String isbn, Model mode) throws Exception {
 //@PathVariable("isbn") 이걸로 받아 온 값을 value에 있는 {}안에 넣어주는 것? 
 		
 		log.debug("ISBN : {}",isbn);

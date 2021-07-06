@@ -31,7 +31,7 @@ public class NaverNewsServiceImplV1 extends NaverAbstractService<NewsDTO> {
 	}
 
 	@Override
-	public List<NewsDTO> getNaverList(String jsonString) throws ParseException {
+	public List<NewsDTO> getNaverList(String jsonString) throws Exception {
 		JsonElement jsonElement = JsonParser.parseString(jsonString);
 		JsonElement oItems = jsonElement.getAsJsonObject().get("items");
 

@@ -69,7 +69,7 @@ public class NaverMovieServiceImplV1 extends NaverAbstractService<MovieDTO>{
 	}
 
 	@Override
-	public List<MovieDTO> getNaverList(String jsonString) throws ParseException {
+	public List<MovieDTO> getNaverList(String jsonString) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
