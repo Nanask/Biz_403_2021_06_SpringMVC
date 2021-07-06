@@ -29,7 +29,7 @@ document.querySelector("button").addEventListener("click", () =>{
 	// 2. json type의 데이터를 ajax로 전송하기 위한 문자열 화
 	// Serialize 라고 한다.
 	let jsonString = JSON.stringify(json)
-	// 제이슨을 시리얼라이징?한다??
+	// 제이슨을 Serialize 한다??
 	alert(jsonString)			
 			
 	//	3. fetch method를 이용하여 서버로 POST 방식으로 전송하기	

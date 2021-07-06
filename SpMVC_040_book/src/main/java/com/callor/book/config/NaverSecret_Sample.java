@@ -11,4 +11,5 @@ public class NaverSecret_Sample {
 	   public static final String NAVER_CLIENT_ID = "YOUR NAME CLIENT ID";
 	   public static final String NAVER_CLIENT_SECRET = "YOUR NAME SECRET";
 
+
 }

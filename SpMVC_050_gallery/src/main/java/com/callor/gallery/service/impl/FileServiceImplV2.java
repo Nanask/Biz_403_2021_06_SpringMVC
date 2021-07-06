@@ -40,9 +40,9 @@ public class FileServiceImplV2 extends FileserviceImplV1{
 		}
 		
 		// 다시한번 fileUpPath가 있는지 검사
-		// winPath일 경우 파일이 없다면 새로 생성하라!
 		path = new File(fileUpPath);
 		if(path.exists()) {
+			// winPath일 경우 파일이 없다면 새로 생성하라!
 			path.mkdirs();
 		}
 		
@@ -50,8 +50,11 @@ public class FileServiceImplV2 extends FileserviceImplV1{
 		String strUUID = UUID.randomUUID().toString();
 		strUUID += originFileName;
 		
+		// fileUpPath = 경로
+		// 기본 파일에 strUUID를 조합한 파일
 		File uploadPathAndFile = new File(fileUpPath, strUUID);
 		
+		//transferTo 파일을 저장한다.
 		file.transferTo(uploadPathAndFile);
 		
 		

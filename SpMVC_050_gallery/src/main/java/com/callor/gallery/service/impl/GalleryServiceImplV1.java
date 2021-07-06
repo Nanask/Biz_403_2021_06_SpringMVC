@@ -56,10 +56,13 @@ public class GalleryServiceImplV1 implements GalleryService{
 		return 0;
 	}
 
+	//fileServiceImplV2에서 리턴 한 값을 여기서 사용
 	@Override
 	public void input(GalleryDTO gaDTO, MultipartFile one_file, MultipartHttpServletRequest m_file) throws Exception {
 		// TODO Auto-generated method stub
 		
+		
+		// strUUID 범용고유식별자
 		// 대표 이미지가 업로드 되면...
 		// 이미지를 서버에 저장하고 저장된 파일의 이름을 return 받기
 		String strUUID = fService.fileUp(one_file);
@@ -71,12 +74,9 @@ public class GalleryServiceImplV1 implements GalleryService{
 	      // GalleryDTO에 담긴 데이터를 tbl_gallery table에 insert하기
 	      
 	      //mapper에서 insert를 수행한 후 새로 생성된 g_seq값을 selectKey 하여 gaDTO의 g_seq 변수에 담아 놓은 상태이다.
+	  	// GalleryDTO에 담긴 데이터를 tbl_gallery table에 insert하기
 	      gaDao.insert(gaDTO);
 
-		
-		// GalleryDTO에 담긴 데이터를 tbl_gallery table에 insert하기
-		gaDao.insert(gaDTO);
-		
 		log.debug(" INSERT 후 seq {} ", gaDTO.getG_seq());
 		
 		//갤러리 게시판의 seq값과 파일들을 묶음으로 insert하기 위한 준비하기

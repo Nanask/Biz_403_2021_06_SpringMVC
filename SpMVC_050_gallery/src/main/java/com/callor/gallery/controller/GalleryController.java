@@ -44,6 +44,7 @@ public class GalleryController {
       String curDate = sd.format(date);
       String curTime = st.format(date);
       
+      
       GalleryDTO gaDTO = GalleryDTO.builder()
                      .g_date(curDate)
                      .g_time(curTime)

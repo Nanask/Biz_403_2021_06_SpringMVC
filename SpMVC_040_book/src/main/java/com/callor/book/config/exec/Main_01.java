@@ -38,7 +38,7 @@ public class Main_01 {
 	   //      new 키워드로 생성자를 호출하지 않는다
 	   //      필요한 변수(속성, 멤버변수)만 가지고 있는 객체를 만들 수 있다
 	   BookDTO bookDTO2 = BookDTO.builder().title("자바야 놀자").price("20000").isbn("9760000").build();
-	   
+	
 	   
 	   
 	}

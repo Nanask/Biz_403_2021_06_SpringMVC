@@ -11,6 +11,7 @@
 <form
 	method="POST"
 	enctype="multipart/form-data">
+	<%-- enctype 파일을 받아올 때 필요한 것? --%>
 	<div>
 		<label>작성자</label> <input
 			name="g_writer"

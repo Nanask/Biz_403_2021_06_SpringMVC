@@ -23,7 +23,8 @@ public class ScoreController {
 	
 	@RequestMapping(value = {"/",""}, method = RequestMethod.GET )
 	public String list(Model model) {
-		
+
+		System.out.println("TEST ##########################");
 		List<ScoreDTO> scList = scDao.selectViewAll();
 		
 		model.addAttribute("SC", scList);

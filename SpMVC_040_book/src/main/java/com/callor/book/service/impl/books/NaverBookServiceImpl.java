@@ -17,7 +17,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
-import com.callor.book.config.NaverSecret;
+//import com.callor.book.config.NaverSecret;
+import com.callor.book.config.NaverSecret_Sample;
 import com.callor.book.model.BookDTO;
 import com.callor.book.service.NaverBookService;
 
@@ -78,8 +79,8 @@ public class NaverBookServiceImpl implements NaverBookService{
 			//요청하는 method GET로 설정하기
 			httpConn.setRequestMethod("GET");
 			
-			httpConn.setRequestProperty("X-Naver-Client-Id", NaverSecret.NAVER_CLIENT_ID);
-			httpConn.setRequestProperty("X-Naver-Client-Secret", NaverSecret.NAVER_CLIENT_SECRET);
+			httpConn.setRequestProperty("X-Naver-Client-Id", NaverSecret_Sample.NAVER_CLIENT_ID);
+			httpConn.setRequestProperty("X-Naver-Client-Secret", NaverSecret_Sample.NAVER_CLIENT_SECRET);
 			
 			// 네이버에서 데이터를 받을 수 있는지 없는지 확인하는 코드?
 			// naver가 어떤 응답을 할 것인지 미리 확인하는 코드를 요청한다.
