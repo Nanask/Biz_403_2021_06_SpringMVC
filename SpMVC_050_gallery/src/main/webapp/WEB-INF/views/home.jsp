@@ -11,11 +11,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+h1 {
+	text-align: center;
+    margin: 15px auto;
+    padding: 10px;
+}
+form div {
+
+}
+</style>
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
 </head>
 <body>
-	<h1>집에갈랭</h1>
+	<h1>집에 갈래?</h1>
 	<c:choose>
 		<c:when test="${BODY eq 'GA-INPUT'}">
 			<%@ include file="/WEB-INF/views/gallery/input.jsp"%>
@@ -23,6 +33,10 @@
 		<c:when test="${BODY eq 'GA-LIST'}">
 			<%@ include file="/WEB-INF/views/gallery/list.jsp"%>
 			<a href="${rootPath}/gallery/input">이미지등록</a>
+		</c:when>
+		<c:when test="${BODY eq 'GA-DETAIL'}">
+			<%@ include file="/WEB-INF/views/gallery/detail.jsp"%>
+			<a href="${rootPath}/gallery">리스트로</a>
 		</c:when>
 			
 		<c:otherwise>
@@ -41,7 +55,5 @@
 			width="100px"
 			height="100px" />
 	</c:forEach>
-	<img src="${rootPath}/files/title.jpg" />
-
 </body>
 </html>

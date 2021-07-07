@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.gallery.model.FileDTO;
 import com.callor.gallery.model.GalleryDTO;
+import com.callor.gallery.model.GalleryFilesDTO;
 import com.callor.gallery.persistance.ext.FileDao;
 import com.callor.gallery.persistance.ext.GalleryDao;
 import com.callor.gallery.service.FileService;
@@ -86,7 +87,13 @@ public class GalleryServiceImplV1 implements GalleryService{
 		
 		// 업로드 된 멀티 파일을 서버에 업로드 하고 원래 파일이름과 UUID가 첨가 된 파일이름을 추출하여 fileDTO에 담고 
 		// 다시 List에 담아 놓는다.
-		for(MultipartFile file : m_file.getFiles("m_file")) {
+		
+		List<MultipartFile> mFile = m_file.getFiles("m_file");
+		
+		//for문을 계속 실행하면서 m_file.getFiles("m_file")를 계속 실행하기 때문에 좋은 코드는 아님 그래서
+		// List로 값을 담아서 for 문을 실행하게 함
+//		for(MultipartFile file : m_file.getFiles("m_file")) {
+		for(MultipartFile file : mFile) {
 			
 			//업로드 하기전에 파일 이름을 추출하고
 			String fileOriginName = file.getOriginalFilename();
@@ -94,13 +101,16 @@ public class GalleryServiceImplV1 implements GalleryService{
 			// 업로드 후 
 			String fileUUName = fService.fileUp(file);
 			
-			FileDTO fDto = FileDTO.builder().file_gseq(g_seq).file_original(fileOriginName).file_upname(fileUUName).build();
+			FileDTO fDto = FileDTO.builder().file_gseq(g_seq) // 갤러리 데이터의 PK값 , mapper에서 새로 생성한 seq값을 리턴해 다시 받아서 여기에 등록함
+					.file_original(fileOriginName).file_upname(fileUUName).build();
 			
 			// 각각의 파일을 저장해 준다.
 			files.add(fDto);
 		}
 		
 		log.debug("이미지들 {}:" , files.toString());
+		
+		fDao.insertOrUpdateWithList(files);
 		
 	}
 
@@ -112,6 +122,14 @@ public class GalleryServiceImplV1 implements GalleryService{
 		
 		log.debug("gaList:{}", gaList.toString());
 		return gaList;
+	}
+
+	@Override
+	public List<GalleryFilesDTO> findByGalleryFiles(Long g_seq) {
+		// TODO Auto-generated method stub
+		
+		return gaDao.findByIdGalleryFiles(g_seq);
+		 
 	}
 
 }
