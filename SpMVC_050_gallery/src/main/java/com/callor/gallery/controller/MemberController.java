@@ -5,8 +5,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.gallery.model.MemberVO;
@@ -56,8 +58,22 @@ public class MemberController {
 		
 //		return null;
 	}
+	// 메뉴에서 로그인을 클릭했을 때 
+	@RequestMapping(value="login/{url}")
+	public String login(@PathVariable("url") String url) {
+		return "redirect:/member/login?url=login";
+		
+	}
+	
+	//다른곳에서 redirect했을 때
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login(Model model) {
+	public String login(@RequestParam(name="url", required = false, defaultValue = "NONE")String url, Model model) {
+		
+		if(url.equals("NONE")) {
+			model.addAttribute("LOGIN_FAIL","LOGIN_REQ");
+		}
+		
+		
 		model.addAttribute("BODY","LOGIN");
 		return "home";
 	}
