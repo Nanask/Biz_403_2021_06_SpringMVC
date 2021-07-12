@@ -27,7 +27,6 @@ div.ga_box {
 	display: flex;
 	width: 30%;
 	border: 1px solid #F17F42;
-	height: 30%;
 	margin: 20px;
 	height: 40%;
 }
