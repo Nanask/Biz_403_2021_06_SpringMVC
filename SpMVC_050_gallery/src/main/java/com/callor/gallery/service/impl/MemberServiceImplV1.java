@@ -109,6 +109,9 @@ public class MemberServiceImplV1 implements MemberService{
 		if(findVO == null) { // memberVO에서 가져온 userid가 null이라면
 			
 			model.addAttribute("LOGIN_FAIL","NOT_USERID"); // HOME에 메세지를 띄움
+//			"LOGIN_FAIL"는 변수
+			//"LOGIN_FAIL" "NOT_USERID" 값이라서 텍스트로 표시할 수 있음
+			
 			return null;
 		}
 		

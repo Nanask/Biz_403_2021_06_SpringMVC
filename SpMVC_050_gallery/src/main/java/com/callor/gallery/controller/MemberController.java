@@ -53,7 +53,6 @@ public class MemberController {
 		}else {
 			return "USE_ID";
 		}
-		
 //		return null;
 	}
 	@RequestMapping(value="/login", method=RequestMethod.GET)
@@ -93,6 +92,7 @@ public class MemberController {
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("MEMBER");
+		
 		return "redirect:/";
 	}
 }

@@ -76,6 +76,8 @@
 			//.then((response) => {
 				//return response.text()
 			//})
+			// in_check에서 이루어진 결과를.text()값으로 받아와서 then으로 받는다.
+			//  
 			.then(response=>response.text())
 			.then(result=> {
 				if(result === "USE_ID") {
