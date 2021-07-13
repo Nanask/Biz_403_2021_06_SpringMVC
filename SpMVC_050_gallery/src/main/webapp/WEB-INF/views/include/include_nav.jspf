@@ -2,7 +2,72 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />
+<style>
+* {
+	box-sizing: border-box;
+	margin:0;
+	padding: 0;
+	list-style: none; 	
+}
+/*
+nav태그에서는 바탕색과 글자색을 지정하기
+*/
+nav#main_nav {
+	background: #F17F42;
+}
+/*
+ul tag에 list-style를 none, display를 flex
+가로방향으로 nav 설정
+*/
+nav#main_nav ul {
+	display: flex;
+	padding: 20px;
+	
+}
+/*
+li에 padding을 주어서 간격조절, box크기를 설정
+마우스 커서를 설정하기
+*/
+nav#main_nav li {
+	align-items: flex-end;
+	padding: 5px;
+	cursor: pointer;
+	position:relative;
+	font-weight: bold;
+	font-size: 20px;
+}
+/*
+특정한 nav를 오른쪽으로 보낼 때
+*/
+nav li#login, nav li#logout {
+	margin-left : auto;
+}
 
+/*
+화면에는 없으나 가상의 태그를 만드는 것
+*/
+nav li:after {
+/*content를 아무것도 없이 ''로 표시하면 아무것도 없는 박스가 생김*/
+	content : '';
+	left:0;
+	bottom:0;
+	
+	/*이 content가 li에 위치시키기 위하여 li에 position을 넣고 여기에도 position을 넣음*/
+	position:absolute; 
+	height: 0;
+	width: 0;
+	
+	transition:width 0.7s;
+}
+
+nav li:hover:after {
+	border-bottom: 5px solid yellow;
+	width: 100%
+}
+
+
+
+</style>
 <nav id="main_nav">
 		<ul>
 			<li id="home">HOME</li>
@@ -16,9 +81,10 @@
 			<c:if test="${not empty MEMBER}">
 			<li>${MEMBER.m_nick}님 환영합니다</li>
 			<li id="logout">로그아웃</li>
+			</c:if>
 			<c:if test="${MEMBER.m_level == 0}">
 				<li id="admin">관리자</li>
-			</c:if>
+			
 			</c:if>
 		</ul>
 	</nav>

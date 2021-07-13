@@ -18,4 +18,8 @@ public interface GalleryService {
 
 	public List<GalleryFilesDTO> findByGalleryFiles(Long g_seq);
 
+	public GalleryDTO findByIdGellery(Long g_seq);
+
+	public int delete(Long g_seq);
+
 }

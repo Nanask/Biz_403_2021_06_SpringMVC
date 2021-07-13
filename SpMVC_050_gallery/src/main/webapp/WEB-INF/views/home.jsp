@@ -1,13 +1,7 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib
-	uri="http://java.sun.com/jsp/jstl/core"
-	prefix="c"%>
-<c:set
-	var="rootPath"
-	value="${pageContext.request.contextPath}" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +21,7 @@ form div {
 </head>
 <body>
 	<h1>집에 갈래?</h1>
-	<%@ include file="/WEB-INF/views/include/include_nav.jspf" %>
+	<%@ include file="/WEB-INF/views/include/include_nav.jspf"%>
 	<c:choose>
 		<c:when test="${BODY eq 'GA-INPUT'}">
 			<%@ include file="/WEB-INF/views/gallery/input.jsp"%>
@@ -40,10 +34,13 @@ form div {
 			<%@ include file="/WEB-INF/views/gallery/detail.jsp"%>
 			<a href="${rootPath}/gallery">리스트로</a>
 		</c:when>
-			<c:when test="${BODY eq 'JOIN'}">
+		<c:when test="${BODY eq 'GA-DETAIL-V2'}">
+			<%@ include file="/WEB-INF/views/gallery/detail2.jsp"%>
+		</c:when>
+		<c:when test="${BODY eq 'JOIN'}">
 			<%@ include file="/WEB-INF/views/member/join.jsp"%>
 		</c:when>
-			<c:when test="${BODY eq 'LOGIN'}">
+		<c:when test="${BODY eq 'LOGIN'}">
 			<%@ include file="/WEB-INF/views/member/login.jsp"%>
 		</c:when>
 		<c:otherwise>
@@ -51,16 +48,9 @@ form div {
 		</c:otherwise>
 	</c:choose>
 
-	<c:forEach
-		items="${FILES}"
-		var="FILE">
-		<a
-			href="${rootPath}/files/${FILE}"
-			target="_NEW"></a>
-		<img
-			src="${rootPath}/files/${FILE}"
-			width="100px"
-			height="100px" />
+	<c:forEach items="${FILES}" var="FILE">
+		<a href="${rootPath}/files/${FILE}" target="_NEW"></a>
+		<img src="${rootPath}/files/${FILE}" width="100px" height="100px" />
 	</c:forEach>
 </body>
 <script>
@@ -78,7 +68,7 @@ let main_nav = document.querySelector("nav#main_nav")
 					//member라는 클래스를 만들고 거기에 join을 만들겠다?
 					location.href = "${rootPath}/member/join"
 				}else if(menu.id === "login") {
-					location.href = "${rootPath}/member/login"
+					location.href = "${rootPath}/member/login/nav"
 				}else if(menu.id === "logout") {
 					location.href = "${rootPath}/member/logout"
 				}else if(menu.id === "image_create") {

@@ -77,5 +77,11 @@
 		//msg_error.style.backgroundColor = "red"
 		//msg_error.style.padding = "2rem"
 		
+	}else if(login_fail == "LOGIN_REQ") {
+
+		//문자열 내에 HTML이 있으면 반영이 된다. <br/>태그가 있기 때문에 Text로 하면 태그가 그대로 나타나기 때문에 HTML을 사용해줌
+		msg_error.innerHTML = "로그인이 필요한 서비스 입니다.</br>";
+		msg_error.innerText = "로그인을 해주세요"
+		msg_error.classList.add("view")
 	}
 </script>
