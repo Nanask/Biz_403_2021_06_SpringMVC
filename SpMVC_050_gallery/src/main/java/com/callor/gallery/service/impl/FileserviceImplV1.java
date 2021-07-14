@@ -98,4 +98,10 @@ public class FileserviceImplV1 implements FileService{
 		
 	}
 
+	@Override
+	public int delete(String imgFileName) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

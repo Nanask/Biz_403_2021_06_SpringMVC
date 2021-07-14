@@ -1,6 +1,7 @@
 package com.callor.gallery.service.impl;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,16 @@ import com.callor.gallery.service.GalleryService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+
+/* 
+ * final로 선언된 inject 변수의 초기화를 시키는데 필요한 생성자를 자동으로 만들어주는 lombok기능이다.
+ * 
+ * 클래스를 상속하면 @RequiredArgsConstructor는 
+ * 상속받은 클래스에서 사용이 불가하다.
+ * 최초는 상관없으나 상속받는 v2같은 경우는 불가하다
+ *
+ */
 
 @RequiredArgsConstructor
 @Slf4j
@@ -154,6 +165,73 @@ public class GalleryServiceImplV1 implements GalleryService{
 	public int delete(Long g_seq) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int file_delete(Long g_seq) {
+		// TODO Auto-generated method stub
+		
+		// 파일을 삭제하기 위하여 저장된 파일 정보를 SELECT 하기
+		FileDTO fDTO = fDao.findById(g_seq);
+		// 업로드되어 저장된 파일을 삭제
+		int ret = fService.delete(fDTO.getFile_upname());
+		
+		//파일이 정상적으로 삭제되면(ret 가 0보다 크면)
+		if(ret > 0) {
+			// tbl_files table에서 데이터를 삭제하기
+			ret = fDao.delete(g_seq);
+		}
+		return ret;
+	}
+	/*
+	 * pageNum을 매개변수로 받아서
+	 * selectAll한 데이터를 잘라내고 
+	 * pageNum에 해당하는 list 부분만 return 하기
+	 * 
+	 * 한 페이지에 보여줄 list = 10 개
+	 */
+
+	@Override
+	public List<GalleryDTO> selectAllPage(int pageNum) throws Exception {
+		// TODO Auto-generated method stub
+		
+		// 1.전체 데이터 SELECT 하기
+		List<GalleryDTO> gaListAll = gaDao.selectAll(); // 
+		
+		// 2. pageNum이 1이라면 list에서 0번째 요소 ~ 9번째 요소까지 추출하기
+		// 만약 pageNum가 2라면 list에서 10번째 요소 ~ 19번째 요소까지 추출하기
+		// 만약 pageNum가 3라면 list에서 20번째 요소 ~ 29번째 요소까지 추출하기
+		
+		int totalCount = gaListAll.size();
+		//페이지를 잘라내기
+		int start = (pageNum - 1) * 10;
+		int end = pageNum * 10;
+		
+		if(pageNum * 10 > totalCount - 10) {
+			end = totalCount;
+			start = end - 10;
+		}
+		
+		
+		List<GalleryDTO> pageList = new ArrayList<GalleryDTO>();
+		for(int i = start ; i < end ; i ++) {
+			
+			pageList.add(gaListAll.get(i));
+//			gaListAll.get(i); // 0번부터 9번까지 추출
+		}
+		return pageList;
+	}
+
+	@Override
+	public List<GalleryDTO> findBySearchOrderPage(int pageNum, String search, String column) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<GalleryDTO> findBySearchPage(int pageNum, String search) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 		 

@@ -1,13 +1,7 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib
-	uri="http://java.sun.com/jsp/jstl/core"
-	prefix="c"%>
-<c:set
-	var="rootPath"
-	value="${pageContext.request.contextPath}" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <form method="POST">
 	<div>
 		<label>ISBN</label>
@@ -31,10 +25,7 @@
 	</div>
 	<div>
 		<label>출판일</label>
-		<input
-			name="pubdate"
-			id="pubdate"
-			placeholder="출판일" />
+		<input name="pubdate" id="pubdate" placeholder="출판일" />
 	</div>
 	<div>
 		<label>정가</label>

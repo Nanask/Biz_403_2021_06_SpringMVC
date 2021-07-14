@@ -83,7 +83,12 @@
 	</selectKey>
 	</insert>
 	<update id="update"></update>
-	<delete id="delete"></delete>
+	<delete id="delete">
+
+		DELETE FROM tbl_gallery 
+		WHERE g_seq = #{g_seq}
+
+	</delete>
 	
 	<!-- 
 	현재 프로젝트에서 프로젝트를 Run하면 자동으로 table을 검사하여 table이 없으면 새로 생성하도록 작성

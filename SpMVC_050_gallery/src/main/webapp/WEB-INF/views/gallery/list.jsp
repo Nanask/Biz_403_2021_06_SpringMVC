@@ -76,7 +76,7 @@ div.ga_box div:last-of-type {
 				</c:if>
 				<div class="ga_text">
 					<div class="title">
-						<a href="${rootPath}/gallery/detail/${GA.g_seq}">${GA.g_subject}</a>
+						<a href="${rootPath}/gallery/detail2/${GA.g_seq}">${GA.g_subject}(${GA.g_seq})</a>
 					</div>
 					<div class="content">
 						<p>${GA.g_content}</p>
@@ -87,3 +87,5 @@ div.ga_box div:last-of-type {
 		</div>
 	</c:forEach>
 </div>
+
+<%@include file="/WEB-INF/views/include/include_page.jspf" %>

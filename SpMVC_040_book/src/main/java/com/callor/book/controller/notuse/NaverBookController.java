@@ -40,7 +40,7 @@ public class NaverBookController {
 			List<BookDTO> bookList = nBookService.getNaverList(jsonString);
 			
 			model.addAttribute("BOOKS",bookList);
-		}
+    		}
 		return "home";
 	}
 	
