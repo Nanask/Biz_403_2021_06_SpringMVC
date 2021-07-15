@@ -9,10 +9,12 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -66,10 +68,28 @@ public class GalleryController {
 	// localhost:8080/rootPath/gallery/ 또는
 	// localhost:8080/rootPath/gallery 로 전송했을 때
 	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
-	public String list(Model model) throws Exception {
+	public String list(@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,
+			@RequestParam(value="search_column", required = false, defaultValue = "NONE") String search_column,
+			@RequestParam(value="search_text", required = false, defaultValue = "NONE") String search_text, Model model) throws Exception {
 		
-		List<GalleryDTO> gaList = gaService.selectAll();
-		model.addAttribute("GALLERYS",gaList);
+		int intPageNum = Integer.valueOf(pageNum);
+		// 기존 코드에서 pageNum을 갖고오는 코드로 변경해주기
+		List<GalleryDTO> gaList = gaService.selectAllPage(intPageNum, model);
+		
+//		List<GalleryDTO> gaList = gaService.selectAll();
+		
+		if(intPageNum > 0) {
+			model.addAttribute("PAGE_NUM",intPageNum);
+		}
+		
+		//tbl_gallery table 전체 list를 가져와서 전체 list를 표시하기 위해서 몇 페이지의 nav가 필요한지 확인
+		
+		
+		//서비스에서 넘기려고 하다보니 겹쳐서 이 부분은 주석처리하자?
+//		model.addAttribute("GALLERYS",gaList);
+		
+		//search_column, search_text를 사용하여 조건검색
+		gaService.findBySearchPage(search_column, search_text, intPageNum, model);
 		model.addAttribute("BODY","GA-LIST");
 		return "home";
 	}
@@ -136,8 +156,7 @@ public class GalleryController {
    }
    
    @RequestMapping(value="/detail2/{seq}", method=RequestMethod.GET)
-   
-   public String detail(@RequestParam("g_seq") String seq, HttpSession session,Model model) {
+   public String detail(@PathVariable("seq") String seq, HttpSession session,Model model) {
 	   
 
 		Long g_seq = 0L;
@@ -167,10 +186,12 @@ public class GalleryController {
 		   //로그인을 했을 때의 값
 		   // 삭제를 요구하면 
 		   // 1. 로그인이 되었는지 확인
-		   MemberVO memVO = (MemberVO) session.getAttribute("MEMBER");
-		   if(memVO == null) { // 로그인이 안될 경우에는 로그인 화면으로 이동하게 한다.
-			   return "redirect:/member/login";
-		   }
+//		   MemberVO memVO = (MemberVO) session.getAttribute("MEMBER");
+//		   if(memVO == null) { // 로그인이 안될 경우에는 로그인 화면으로 이동하게 한다.
+//			   return "redirect:/member/login";
+//		   }
+		   
+		   
 
 		Long g_seq = 0L;
 		try {
@@ -184,6 +205,23 @@ public class GalleryController {
 		int ret = gaService.delete(g_seq);
 
 		return "redirect:/gallery";
+	}
+	@ResponseBody
+	@RequestMapping(value="/file/delete/{seq}", method=RequestMethod.GET)
+	public String file_delete(@PathVariable("seq") String seq) {
+		
+		Long g_seq = 0L;
+		
+			try {
+				g_seq = Long.valueOf(seq);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				return "FAIL_SEQ";
+			}
+			int ret = gaService.file_delete(g_seq);
+			
+			if(ret > 0) return "OK";
+			else return "FAIL";
 	}
 	
 }

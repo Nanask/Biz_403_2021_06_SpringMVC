@@ -1,13 +1,7 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib
-	uri="http://java.sun.com/jsp/jstl/core"
-	prefix="c"%>
-<c:set
-	var="rootPath"
-	value="${pageContext.request.contextPath}" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="rootPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,21 +9,20 @@
 <title>나의 홈페이지</title>
 </head>
 <style>
-	td.book_title {
-		width: 20%;
-		max-width: 0;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-	}
-	
-	td img {
-		padding: 0.5rem;
-		border:1px solid green;
-		width: 50px;
-		height: 50%;
-		
-	}
+td.book_title {
+	width: 20%;
+	max-width: 0;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+td img {
+	padding: 0.5rem;
+	border: 1px solid green;
+	width: 50px;
+	height: 50%;
+}
 </style>
 <body>
 	<h1>나의 서재</h1>
@@ -44,14 +37,18 @@
 		</tr>
 		<c:choose>
 			<c:when test="${empty MY_BOOKS}">
-				<tr><td colspan="6">데이터없음</td></tr>
+				<tr>
+					<td colspan="6">데이터없음</td>
+				</tr>
 			</c:when>
 			<c:otherwise>
 				<c:forEach items="${MY_BOOKS}" var="BOOK" varStatus="i">
 					<tr data-isbn="${BOOK.isbn}">
 						<td>${BOOK.isbn}</td>
 						<td class="book_title">${BOOK.title}</td>
-						<td><img width="50px" src="${BOOK.image}"alt="${BOOK.title}"/></td>
+						<td>
+							<img width="50px" src="${BOOK.image}" alt="${BOOK.title}" />
+						</td>
 						<%-- alt="${BOOK.title} 이미지가 없다면 이미지대신 타이틀을 보이게 하기 --%>
 						<td>${BOOK.publisher}</td>
 						<td>${BOOK.author}</td>
