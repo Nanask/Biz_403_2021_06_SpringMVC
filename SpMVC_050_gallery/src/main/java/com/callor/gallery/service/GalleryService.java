@@ -2,6 +2,7 @@ package com.callor.gallery.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -37,5 +38,9 @@ public interface GalleryService {
 	public int delete(Long g_seq);
 
 	public int file_delete(Long g_seq);
+
+	public List<GalleryDTO> selectAllPage(int intPageNum, Model model) throws Exception;
+	
+	public List<GalleryDTO> findBySearchPage(String search_column,String search_text, int pageNum, Model model);
 
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -67,11 +68,13 @@ public class GalleryController {
 	// localhost:8080/rootPath/gallery/ 또는
 	// localhost:8080/rootPath/gallery 로 전송했을 때
 	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
-	public String list(@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,Model model) throws Exception {
+	public String list(@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,
+			@RequestParam(value="search_column", required = false, defaultValue = "NONE") String search_column,
+			@RequestParam(value="search_text", required = false, defaultValue = "NONE") String search_text, Model model) throws Exception {
 		
 		int intPageNum = Integer.valueOf(pageNum);
 		// 기존 코드에서 pageNum을 갖고오는 코드로 변경해주기
-		List<GalleryDTO> gaList = gaService.selectAllPage(intPageNum);
+		List<GalleryDTO> gaList = gaService.selectAllPage(intPageNum, model);
 		
 //		List<GalleryDTO> gaList = gaService.selectAll();
 		
@@ -79,7 +82,14 @@ public class GalleryController {
 			model.addAttribute("PAGE_NUM",intPageNum);
 		}
 		
-		model.addAttribute("GALLERYS",gaList);
+		//tbl_gallery table 전체 list를 가져와서 전체 list를 표시하기 위해서 몇 페이지의 nav가 필요한지 확인
+		
+		
+		//서비스에서 넘기려고 하다보니 겹쳐서 이 부분은 주석처리하자?
+//		model.addAttribute("GALLERYS",gaList);
+		
+		//search_column, search_text를 사용하여 조건검색
+		gaService.findBySearchPage(search_column, search_text, intPageNum, model);
 		model.addAttribute("BODY","GA-LIST");
 		return "home";
 	}

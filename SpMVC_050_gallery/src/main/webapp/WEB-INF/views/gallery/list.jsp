@@ -63,6 +63,7 @@ div.ga_box div:last-of-type {
 }
 */
 </style>
+<%@ include file ="/WEB-INF/views/include/include_gallery_search.jspf" %>
 <div class="image">
 	<c:forEach items="${GALLERYS}" var="GA">
 		<%-- <div class="out_box">--%>

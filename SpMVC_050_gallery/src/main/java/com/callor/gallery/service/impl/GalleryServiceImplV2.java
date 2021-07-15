@@ -11,6 +11,7 @@ import com.callor.gallery.model.GalleryFilesDTO;
 import com.callor.gallery.persistance.ext.FileDao;
 import com.callor.gallery.persistance.ext.GalleryDao;
 import com.callor.gallery.service.FileService;
+import com.callor.gallery.service.PageService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,12 +41,18 @@ public class GalleryServiceImplV2 extends GalleryServiceImplV1{
 	 * 이 때 각 매개변수의 요소 type앞에 작성해 주면 된다.
 	 * 
 	 */
-	public GalleryServiceImplV2(
-			GalleryDao gaDao, 
-			FileDao fDao, 
-			@Qualifier("fileServiceV2")  FileService fService) {
-	super(gaDao, fDao, fService);
-}
+//	public GalleryServiceImplV2(
+//			GalleryDao gaDao, 
+//			FileDao fDao, 
+//			@Qualifier("fileServiceV2")  FileService fService) {
+//	super(gaDao, fDao, fService);
+//}
+
+public GalleryServiceImplV2(GalleryDao gaDao, FileDao fDao,@Qualifier("fileServiceV2") FileService fService, PageService pageService) {
+		super(gaDao, fDao, fService, pageService);
+		// TODO Auto-generated constructor stub
+	}
+
 
 @Override
 public GalleryDTO findByIdGellery(Long g_seq) {

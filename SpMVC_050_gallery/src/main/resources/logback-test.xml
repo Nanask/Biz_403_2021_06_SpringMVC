@@ -8,7 +8,7 @@
 		</encoder>
 	</appender>
 
-<!-- 적용하는 프로젝트의  Base Package를 설정 -->
+	<!-- 적용하는 프로젝트의 Base Package를 설정 -->
 
 	<logger name="com.callor.gallery">
 		<level value="INFO" additivity="false" />
@@ -17,6 +17,9 @@
 		<level value="DEBUG" additivity="false" />
 	</logger>
 	<logger name="com.callor.gallery.service">
+		<level value="DEBUG" additivity="false" />
+	</logger>
+	<logger name="com.callor.gallery.persistance">
 		<level value="DEBUG" additivity="false" />
 	</logger>
 
