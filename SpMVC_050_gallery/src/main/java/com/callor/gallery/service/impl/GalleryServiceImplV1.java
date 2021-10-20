@@ -187,7 +187,7 @@ public class GalleryServiceImplV1 implements GalleryService {
 	 * 한 페이지에 보여줄 list = 10 개
 	 */
 
-	@Override
+	@Override // 처음에 알려주신 것
 	public List<GalleryDTO> selectAllPage(int pageNum) throws Exception {
 		// TODO Auto-generated method stub
 
@@ -217,20 +217,24 @@ public class GalleryServiceImplV1 implements GalleryService {
 		return pageList;
 	}
 
-	@Override
+	@Override // 변경버전
 	public List<GalleryDTO> selectAllPage(int intPageNum, Model model) throws Exception {
 		// TODO Auto-generated method stub
-
+//intPageNum = currentpage
 		List<GalleryDTO> galleryAll = gaDao.selectAll();
 
+		
+		//전체 게시물의 개수
 		int totalListSize = galleryAll.size();
 
 		PageDTO pageDTO = pageService.makePagination(totalListSize, intPageNum);
 
 		List<GalleryDTO> pageList = new ArrayList<>();
-
+		
+		// 시작은 offset , 끝은 limit , 배열의 시작값을 getoffset으로 하고 배열의 끝을 getlimit로 했음
+		// 만약에 30개의 리스트가 있으면 3페이지에서 시작값인 20이 offset이고 29가 limit , 배열은 0부터 시작한다 기억좀하자
 		for (int i = pageDTO.getOffset(); i < pageDTO.getLimit(); i++) {
-			pageList.add(galleryAll.get(i));
+			pageList.add(galleryAll.get(i)); // 한페이지에서 보일수 있게 시작값과 끝 값을 잘라서 add해주기
 
 		}
 

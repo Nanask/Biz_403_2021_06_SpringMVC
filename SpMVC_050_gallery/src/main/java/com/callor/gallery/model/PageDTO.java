@@ -13,7 +13,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PageDTO {
+public class PageDTO { //페이지네이션을 위해 필요한 변수를 선언
 	
 	//nav를 위한 데이터
 	private int startPage;

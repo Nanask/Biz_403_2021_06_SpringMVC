@@ -68,7 +68,7 @@ public class GalleryController {
 	// localhost:8080/rootPath/gallery/ 또는
 	// localhost:8080/rootPath/gallery 로 전송했을 때
 	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
-	public String list(@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum,
+	public String list(@RequestParam(value = "pageNum", required = false, defaultValue = "1") String pageNum, //defaultValue = "1" 값이 없으면 대신해라
 			@RequestParam(value="search_column", required = false, defaultValue = "NONE") String search_column,
 			@RequestParam(value="search_text", required = false, defaultValue = "NONE") String search_text, Model model) throws Exception {
 		
@@ -85,7 +85,7 @@ public class GalleryController {
 		//tbl_gallery table 전체 list를 가져와서 전체 list를 표시하기 위해서 몇 페이지의 nav가 필요한지 확인
 		
 		
-		//서비스에서 넘기려고 하다보니 겹쳐서 이 부분은 주석처리하자?
+		//서비스에서 넘겨 실행시키려고 주석처리함
 //		model.addAttribute("GALLERYS",gaList);
 		
 		//search_column, search_text를 사용하여 조건검색

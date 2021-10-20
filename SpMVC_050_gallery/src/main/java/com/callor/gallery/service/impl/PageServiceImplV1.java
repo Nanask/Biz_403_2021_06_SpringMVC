@@ -18,7 +18,7 @@ public class PageServiceImplV1 implements PageService{
 	/*
 	 * 전체 페이지 수와 현재 페이지 번호를 매개변수로 받아서 pagenation을 그리는데 필요한 데이터를 생성하기
 	 */
-	@Override
+	@Override // currentPage = 현재 페이지를 알려주는 것
 	public PageDTO makePagination(int totalListSize, int currentPage) {
 		// TODO Auto-generated method stub
 		
@@ -51,15 +51,20 @@ public class PageServiceImplV1 implements PageService{
 		// offset : 680
 		// limit : 5가 되어야 하는데 아래 연산에서 limit 690이 되어버린다.
 		// 그러면 데이터를 자르는 과정에서 오류가 발생함.
-		int offset = (currentPage - 1) * this.listPerPage;
+		int offset = (currentPage - 1) * this.listPerPage; // 전체 개수에서 값을 구할 때 정확히 나눠지지 않는 값을 구하기 위한 것 
 //		int limit =  currentPage + this.listPerPage;
-		int limit =  offset + this.listPerPage;
+		int limit =  offset + this.listPerPage; // 전체 개수 offset으로 정확히 나눠지지 않는 값을 전체개수에 더해 limit를 만듦
+		
+//		offset + limit = 전체 데이터 수!!!!!!!!!!!!!!
 		// 마지막 위치 값이 전체 리스트보다 크면 
 		// 전체 리스트 끝 값으로 세팅하기
-		limit = limit > totalListSize ? totalListSize : limit;
+		limit = limit > totalListSize ? totalListSize : limit; // limit > totalListSize 면 totalList이고 아니라면 limit
 		
 		// offset : 680, limit : 685가 되도록 만들었음
 		
+//		offset < totalList =< limit
+		
+		//코드 줄일려고 썼대요
 		PageDTO pageDTO = PageDTO.builder()
 						.totalPages(totalPages)
 						.startPage(startPage)

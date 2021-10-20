@@ -59,6 +59,9 @@ section.page_box li.active {
 		<c:forEach begin="${PAGE_NAV.startPage}" end="${PAGE_NAV.endPage}" var="pageNum">
 			<li data-num="${pageNum}"
 				class="<c:if test="${PAGE_NUM == pageNum}">active</c:if>">${pageNum}</li>
+				<%-- 
+				url에 넘겨져오는 pageNum과 model로 넘긴 PAGE_NUM이 같다면 active클래스를 준다.
+				 --%>
 		</c:forEach>
 		<c:if test="${PAGE_NAV.endPage < PAGE_NAV.totalPages}">
 			<li>....</li>
